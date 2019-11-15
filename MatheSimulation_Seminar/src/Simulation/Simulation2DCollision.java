@@ -58,6 +58,9 @@ public class Simulation2DCollision extends JFrame {
 		if (positionX1 + 30 >= _0_Constants.WINDOW_WIDTH || positionX1 <= 0) {
 			velocityX *= -1;
 		}
+		if (positionY1 + 30 >= _0_Constants.WINDOW_HEIGHT || positionY1 <= 0) {
+			velocityY *= -1;
+		}
 		
 		//CollisionDetection
 		if(positionX1 >= positionX2 - 30) {
