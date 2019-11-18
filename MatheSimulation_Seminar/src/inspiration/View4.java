@@ -1,4 +1,4 @@
-package finished;
+package inspiration;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,7 +16,11 @@ import javax.swing.SwingUtilities;
 
 public class View4 extends javax.swing.JFrame implements MouseMotionListener, MouseListener {
 
-    private BufferedImage bi;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private BufferedImage bi;
     private Ball[] balls = new Ball[10];
     private Color bgcolor = new Color(10, 127, 10);
     private Timer timer = new Timer();

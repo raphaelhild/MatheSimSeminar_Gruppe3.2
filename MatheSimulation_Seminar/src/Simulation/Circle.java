@@ -24,7 +24,7 @@ public class Circle {
 		}
 	}	
 	
-	public boolean distanceBetweenCenters(Circle circle2){
+	public boolean hasCollision(Circle circle2){
 		double x1 = this.positionX;
 		double y1 = this.positionY;
 		double x2 = circle2.positionX;
@@ -58,16 +58,9 @@ public class Circle {
 	}
 	
 	public void handleCollision(Circle circle2) {
-		if(distanceBetweenCenters(circle2)) {
+		if(hasCollision(circle2)) {
 			velocity *= -1;
 		}
 	}
-	/*
-	if(positionX >= circle2.positionX - 30) {
-		
-	}
-	if(positionY >= circle2.positionY - 30) {
-		velocity *= -1;
-	}*/
 	
 }
