@@ -7,6 +7,8 @@ public class Circle {
 	double velocityX;
 	double velocityY;
 	double masse;
+	double k;
+	double l;
 	
 	Circle(double x, double y, double _r, double _vX, double _vY, double _m){
 		vektor.pX = x;
@@ -15,6 +17,8 @@ public class Circle {
 		velocityX = _vX;
 		velocityY = _vY;
 		masse = _m;
+		k = 20;
+		l = 20;
 	}
 
 	public void handleWallCollision() {
@@ -37,14 +41,7 @@ public class Circle {
 		//Distanz zwischen den beiden Mittelpunkten
 		//double distance = java.lang.Math.sqrt(((x1 - x2)*(x1 - x2)) + ((y1 - y2) * (y1 - y2)));
 		
-		if((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) < (r1 + r2)){
-			return true;
-		}
-		
 		return ((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) < (r1 + r2) * (r1 + r2));
-		
-		//System.out.println(distance);
-		//System.out.println((r1 + r2) / 2);
 		
 		//Sobald Summe beider Radien unterschritten besteht eine Kollision
 		//"(r1 + r2) / 2", da nur Abstand der Radien zählt und nicht der Durchmesser
@@ -54,14 +51,18 @@ public class Circle {
 	}
 	
 	public void handleCollision(Circle circle2) {
-		
+		/*
 		if(hasCollision(circle2)) {
 			velocityX *= -1;
 			velocityY *= -1;
-		}
+		}*/
 		
-		/*
-		if(hasCollision(circle2)) {
+		
+		
+
+
+
+	if(hasCollision(circle2)) {
 		
 		//Rechnung für vollelastischen Stoß
 		Vektor u1 = this.getU(this.vektor, this.getV(this.vektor, circle2.vektor));
@@ -71,8 +72,7 @@ public class Circle {
 		
 		
 		//!!!!!!
-		double k = 20;
-		double l = 20;
+		
 		if(this.vektor.getRelativeAngleBetween(circle2.vektor) == 0 && circle2.velocityX == 0 && circle2.velocityY == 0)
 		{
 			l = 0;
@@ -81,20 +81,20 @@ public class Circle {
 		}
 		else {
 		    k =  2 * u1.pX * b.pX;
-		    l = -2 * u2.pX * b.pX;
+		    l = 2 * u2.pX * b.pX;
 		}
 
-
-		this.vektor.pX = this.vektor.pX - k * b.pX;
-		this.vektor.pY = this.vektor.pY - k * b.pY;
 		
-		circle2.vektor.pX = circle2.vektor.pX - l * b.pX;
-		circle2.vektor.pY = circle2.vektor.pY - l * b.pY;
+		//this.vektor.pX = this.vektor.pX - k * b.pX;
+		//this.vektor.pY = this.vektor.pY - k * b.pY;
 		
-		System.out.println("C2X: " + circle2.vektor.pX);
-		System.out.println("C2Y: " + circle2.vektor.pY);
-		System.out.println("C1X: " + this.vektor.pX);
-		System.out.println("C1Y: " + this.vektor.pY);
+		
+		
+		this.vektor.add(new Vektor(this.vektor.pX - k * b.pX, this.vektor.pY - k * b.pY));
+		
+		
+		//circle2.vektor.pX = circle2.vektor.pX - l * b.pX;
+		//circle2.vektor.pY = circle2.vektor.pY - l * b.pY;
 		}
 	}
 	
@@ -111,6 +111,6 @@ public class Circle {
 		
 		return new Vektor(UX, UY);
 	}
-	*/
+	
 }
-}
+

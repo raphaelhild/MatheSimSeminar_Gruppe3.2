@@ -28,8 +28,8 @@ public class Simulation2DCollision extends JFrame {
 		int m1 = 1;
 		int m2 = 1;
 		int r1 = 30;
-		AllCircles[0] = new Circle(150, _0_Constants.WINDOW_HEIGHT / 2, r1, -1, 0.001, m1);
 		int r2 = 30;
+		AllCircles[0] = new Circle(150, _0_Constants.WINDOW_HEIGHT / 2, r1, -1, 0.001, m1);
 		AllCircles[1] = new Circle(_0_Constants.WINDOW_WIDTH / 2, _0_Constants.WINDOW_HEIGHT - r2*2-5, r2, 0, 1, m2);		
 		
 		testObjekt.setVisible(true);
@@ -61,8 +61,10 @@ public class Simulation2DCollision extends JFrame {
 		
 		AllCircles[0].handleCollision(AllCircles[1]);
 		AllCircles[1].handleCollision(AllCircles[0]);
-	
-		bbg.setColor(Color.RED);
+		System.out.println("HALLO");
+		bbg.setColor(Color.BLACK);
+		
+		System.out.println(AllCircles[0].vektor.pX);
 		
 		//first circle
 		AllCircles[0].vektor.pX -= AllCircles[0].velocityX;
