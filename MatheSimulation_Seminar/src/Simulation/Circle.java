@@ -4,23 +4,25 @@ public class Circle {
 	
 	Vektor vektor = new Vektor();
 	double radius;
-	double velocity;
+	double velocityX;
+	double velocityY;
 	double masse;
 	
-	Circle(double x, double y, double _r, double _v, double _m){
+	Circle(double x, double y, double _r, double _vX, double _vY, double _m){
 		vektor.pX = x;
 		vektor.pY = y;
 		radius = _r;
-		velocity = _v;
+		velocityX = _vX;
+		velocityY = _vY;
 		masse = _m;
 	}
-	
+
 	public void handleWallCollision() {
 		if (vektor.pX + radius*2 >= _0_Constants.WINDOW_WIDTH || vektor.pX <= 0) {
-			velocity *= -1;
+			velocityX *= -1;
 		}
 		if (vektor.pY + radius*2 >= _0_Constants.WINDOW_HEIGHT || vektor.pY <= radius) {
-			velocity *= -1;
+			velocityY *= -1;
 		}
 	}	
 	
@@ -52,9 +54,14 @@ public class Circle {
 	}
 	
 	public void handleCollision(Circle circle2) {
+		
 		if(hasCollision(circle2)) {
-			velocity *= -1;
+			velocityX *= -1;
+			velocityY *= -1;
 		}
+		
+		/*
+		if(hasCollision(circle2)) {
 		
 		//Rechnung für vollelastischen Stoß
 		Vektor u1 = this.getU(this.vektor, this.getV(this.vektor, circle2.vektor));
@@ -66,17 +73,18 @@ public class Circle {
 		//!!!!!!
 		double k = 20;
 		double l = 20;
-		if(this.vektor.getRelativeAngleBetween(circle2.vektor) == 0 && circle2.velocity == 0)
+		if(this.vektor.getRelativeAngleBetween(circle2.vektor) == 0 && circle2.velocityX == 0 && circle2.velocityY == 0)
 		{
 			l = 0;
-		}else if(this.vektor.getRelativeAngleBetween(circle2.vektor) == 0 && this.velocity == 0) {
+		}else if(this.vektor.getRelativeAngleBetween(circle2.vektor) == 0 && this.velocityX == 0 && circle2.velocityY == 0) {
 			k = 0;
 		}
 		else {
 		    k =  2 * u1.pX * b.pX;
 		    l = -2 * u2.pX * b.pX;
 		}
-		
+
+
 		this.vektor.pX = this.vektor.pX - k * b.pX;
 		this.vektor.pY = this.vektor.pY - k * b.pY;
 		
@@ -87,6 +95,7 @@ public class Circle {
 		System.out.println("C2Y: " + circle2.vektor.pY);
 		System.out.println("C1X: " + this.vektor.pX);
 		System.out.println("C1Y: " + this.vektor.pY);
+		}
 	}
 	
 	public Vektor getV(Vektor v1, Vektor v2) {
@@ -102,5 +111,6 @@ public class Circle {
 		
 		return new Vektor(UX, UY);
 	}
-	
+	*/
+}
 }

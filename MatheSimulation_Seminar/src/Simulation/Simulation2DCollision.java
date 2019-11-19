@@ -2,7 +2,6 @@ package Simulation;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
@@ -29,9 +28,9 @@ public class Simulation2DCollision extends JFrame {
 		int m1 = 1;
 		int m2 = 1;
 		int r1 = 30;
-		AllCircles[0] = new Circle(150, _0_Constants.WINDOW_HEIGHT / 2, r1, 1, m1);
+		AllCircles[0] = new Circle(150, _0_Constants.WINDOW_HEIGHT / 2, r1, -1, 0.001, m1);
 		int r2 = 30;
-		AllCircles[1] = new Circle(_0_Constants.WINDOW_WIDTH / 2, _0_Constants.WINDOW_HEIGHT - r2*2-5, r2, 1, m2);		
+		AllCircles[1] = new Circle(_0_Constants.WINDOW_WIDTH / 2, _0_Constants.WINDOW_HEIGHT - r2*2-5, r2, 0, 1, m2);		
 		
 		testObjekt.setVisible(true);
 		double absT = 0;
@@ -66,12 +65,13 @@ public class Simulation2DCollision extends JFrame {
 		bbg.setColor(Color.RED);
 		
 		//first circle
-		AllCircles[0].vektor.pX += AllCircles[0].velocity;
-		//AllCircles[0].vektor.pY += AllCircles[0].velocity;
+		AllCircles[0].vektor.pX -= AllCircles[0].velocityX;
+		AllCircles[0].vektor.pY += AllCircles[0].velocityY;
 		bbg.fillOval((int)(AllCircles[0].vektor.pX),(int) AllCircles[0].vektor.pY, (int)AllCircles[0].radius * 2, (int)AllCircles[0].radius * 2);
 		
 		//second circle
-		AllCircles[1].vektor.pY -=  AllCircles[1].velocity;
+		AllCircles[1].vektor.pY -=  AllCircles[1].velocityY;
+		AllCircles[1].vektor.pX += AllCircles[1].velocityX;
 		bbg.fillOval((int)(AllCircles[1].vektor.pX),(int) AllCircles[1].vektor.pY, (int)AllCircles[1].radius * 2, (int)AllCircles[1].radius * 2);
 
 		//Schwerpunkt zeichnen

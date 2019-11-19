@@ -1,7 +1,5 @@
 package Simulation;
 
-import java.awt.Color;
-
 public class Vektor {
 	
 	public double pX;
@@ -12,8 +10,8 @@ public class Vektor {
 	}
 	
 	public Vektor(double pX, double pY) {
-		pX = pX;
-		pY = pY;
+		this.pX = pX;
+		this.pY = pY;
 	}
 	
 	public Vektor add(Vektor v) {
