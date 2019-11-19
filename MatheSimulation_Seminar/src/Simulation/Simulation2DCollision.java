@@ -61,7 +61,7 @@ public class Simulation2DCollision extends JFrame {
 		
 		AllCircles[0].handleCollision(AllCircles[1]);
 		AllCircles[1].handleCollision(AllCircles[0]);
-		System.out.println("HALLO");
+		
 		bbg.setColor(Color.BLACK);
 		
 		System.out.println(AllCircles[0].vektor.pX);
