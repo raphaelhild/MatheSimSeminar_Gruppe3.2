@@ -77,7 +77,7 @@ public class Circle {
 	public void handleCollision(Circle circle2) {
 		if(hasCollision(circle2)==true) {
 			//velocity=-1;
-			
+			//...
 			//circle2.vektor.pY=vektor.pY*velocity1;
 			
 		
