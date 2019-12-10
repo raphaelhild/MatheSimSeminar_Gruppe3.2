@@ -15,7 +15,6 @@ public class Vektor {
 		
 	}
 
-	
 	public Vektor add(Vektor v) {
         return new Vektor(pX + v.pX, pY + v.pY);
     }
