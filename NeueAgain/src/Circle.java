@@ -55,42 +55,41 @@ public class Circle {
 	}
 	
 	public void handleCollision(Circle circle2) {
-		
-			//Status wieder auf false setzen für spätere Abfrage
-			if(hasCollision(circle2) == false) { status = false; }
+		//Status wieder auf false setzen für spätere Abfrage
+		if(hasCollision(circle2) == false) { status = false; }
 			
-			//Bei Kollision und keiner schon erfolgten Neuberechnung
-			if(hasCollision(circle2) == true  && status ==false) {
+		//Bei Kollision und keiner schon erfolgten Neuberechnung
+		if(hasCollision(circle2) == true  && status ==false) {
 			//Kontrollausgabe DAVOR
 			System.out.println("DAVOR - velocity x1 : " + this.velocity_x + " velocity y1 : " + this.velocity_y);
 			System.out.println("DAVOR - velocity x2 : " + circle2.velocity_x + " velocity y2 : " + circle2.velocity_y);
-				
+					
 			//Wurden die neuen Bewegungsrichtungen schon berechnet?
 			status = true;
-	
+		
 			//Einheitsvektor b^ berechnen
 			bx = this.vektor.pX - circle2.vektor.pX;
 			by = this.vektor.pY - circle2.vektor.pY;
 			double b_length = Math.sqrt((bx*bx)+(by*by));
 			bx *= 1 / b_length;
 			by *= 1 / b_length;
-	
+		
 			//V berechnen
 			this.Vx = (this.velocity_x + circle2.velocity_x)/2;
 			this.Vy = (this.velocity_y + circle2.velocity_y)/2;
-	
+		
 			//U1 und U2 (Schwerpunktgeschwindigkeit) berechnen
 			U1x= this.velocity_x - Vx;
 			U1y= this.velocity_y - Vy;
 			U2x= circle2.velocity_x - Vx;
 			U2y= circle2.velocity_y - Vy;
-
+	
 			//Neue Bewegungsrichtungen berechnen
 			if(this.Epsilon == 1) {
 				//k und l berechnen
 				double k = 2 * ((bx * U1x) + (by * U1y));
 				double l = (-2) * ((bx * U2x) + (by * U2y));
-				
+					
 				//neue Geschwindigkeiten v1 und v2 berechnen
 				double v1_length = Math.sqrt((velocity_x * velocity_x) + (velocity_y * velocity_y));
 				double velocity_x_einheits = (1 / v1_length) * velocity_x;
@@ -98,10 +97,10 @@ public class Circle {
 				double v2_length = Math.sqrt((circle2.velocity_x * circle2.velocity_x) + (circle2.velocity_y * circle2.velocity_y));
 				double velocityx2_einheits = (1 / v2_length) * circle2.velocity_x;
 				double velocityy2_einheits = (1 / v2_length) * circle2.velocity_y;
-	
+		
 				velocity_x = velocity_x_einheits - k * bx;
 				velocity_y = velocity_y_einheits - k * by;
-	
+		
 				//Neue Bewegungsrichtungen zuweisen
 				circle2.velocity_x = velocityx2_einheits + l * bx;
 				circle2.velocity_y = velocityy2_einheits + l * by;
@@ -110,7 +109,7 @@ public class Circle {
 				//k und l berechnen
 				double k = +((bx * U1x) + (by * U1y));
 				double l = -((bx * U2x) + (by * U2y));
-				
+					
 				//neue Geschwindigkeiten v1 und v2 berechnen
 				double v1_length = Math.sqrt((velocity_x * velocity_x) + (velocity_y * velocity_y));
 				double velocity_x_einheits = (1 / v1_length) * velocity_x;
@@ -118,15 +117,15 @@ public class Circle {
 				double v2_length = Math.sqrt((circle2.velocity_x * circle2.velocity_x) + (circle2.velocity_y * circle2.velocity_y));
 				double velocityx2_einheits = (1 / v2_length) * circle2.velocity_x;
 				double velocityy2_einheits = (1 / v2_length) * circle2.velocity_y;
-				
+					
 				velocity_x = velocity_x_einheits - k * bx;
 				velocity_y = velocity_y_einheits - k * by;
-	
+		
 				//Neue Bewegungsrichtungen zuweisen
 				circle2.velocity_x = velocityx2_einheits + l * bx;
 				circle2.velocity_y = velocityy2_einheits + l * by;
 			}	
-			
+				
 			//Kontrollausgabe
 			System.out.println("DANACH - velocity x1 : " + this.velocity_x + " velocity y1 : " + this.velocity_y);
 			System.out.println("DANACH - velocity x2 : " + circle2.velocity_x + " velocity y2 : " + circle2.velocity_y);
