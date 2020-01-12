@@ -30,7 +30,7 @@ public class Circle {
 	//Kollision mit der Wand?
 	public void handleWallCollision(Circle circle2) {
 		
-		if(vektor.pX + radius*2 >= Constants.WINDOW_WIDTH && hasCollision(circle2)==true && vektor.pX== circle2.vektor.pX || vektor.pX <= 0 && hasCollision(circle2)==true && vektor.pX== circle2.vektor.pX){
+		if(vektor.pX + radius*2 >= Constants.WINDOW_WIDTH && hasCollision(circle2)==true && vektor.pY== circle2.vektor.pY || vektor.pX <= 0 && hasCollision(circle2)==true && vektor.pY== circle2.vektor.pY){
 			circle2.velocity_x *= -1;
 			velocity_x *=-1;
 			
@@ -39,7 +39,7 @@ public class Circle {
 		else if (vektor.pX + radius*2 >= Constants.WINDOW_WIDTH || vektor.pX <= 0 && status==false) {
 			velocity_x *= -1;
 		}
-		if(vektor.pY + radius*2 >= Constants.WINDOW_HEIGHT && hasCollision(circle2)==true && vektor.pY== circle2.vektor.pY || vektor.pY <= radius && hasCollision(circle2)==true && vektor.pY== circle2.vektor.pY) {
+		if(vektor.pY + radius*2 >= Constants.WINDOW_HEIGHT && hasCollision(circle2)==true && vektor.pX== circle2.vektor.pX || vektor.pY <= radius && hasCollision(circle2)==true && vektor.pX== circle2.vektor.pX) {
 			circle2.velocity_y *= -1;
 			velocity_y *=-1;
 		}
@@ -141,8 +141,8 @@ public class Circle {
 			}
 			else if(this.Epsilon == 0) {
 				//k und l berechnen
-				double k = +((bx * U1x) + (by * U1y));//+(((U1x*U1x+U1y*U1y)+((bx*bx)+(by*by)))-((U1x*U1x)+(U1y*U1y))));
-				double l = -((bx * U2x) + (by * U2y));//+(((U2x*U2x+U2y*U2y)+((bx*bx)+(by*by)))-((U2x*U2x)+(U2y*U2y))));
+				double k = +(((bx * U1x) + (by * U1y))+(((U1x*U1x+U1y*U1y)*((bx*bx)+(by*by)))-((U1x*U1x)+(U1y*U1y))));
+				double l = -(((bx * U2x) + (by * U2y))-(((U2x*U2x+U2y*U2y)*((bx*bx)+(by*by)))-((U2x*U2x)+(U2y*U2y))));
 					
 				//neue Geschwindigkeiten v1 und v2 berechnen
 				double v1_length = Math.sqrt((velocity_x * velocity_x) + (velocity_y * velocity_y));
